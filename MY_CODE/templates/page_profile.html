@@ -60,12 +60,15 @@
             <!-- Topbar -->
             <div class="topbar">
                 <ul class="loginbar pull-right">
-                    <li class="hoverSelector">
-                    <li><a href="#">Logged in as</a></li>
+
+                    <li>{{user}}</li>
                     <!--<li><a href="{{url_for ('registration')}}">Registration</a></li>-->
                     <li class="topbar-devider"></li>
+                    <!--<li>{{ user }}</li>-->
+                    <li> <a href="{{url_for ('login')}}"><u>Sign Out </u> </a></li>
 
-                    <li><a href="#">{{ user }}</a></li>
+
+
                 </ul>
             </div>
             <!-- End Topbar -->
@@ -121,280 +124,27 @@
                 <!--End Datepicker-->
             </div>
 
-            <div class="col-md-9">
-                <div class="profile-body">
 
-                    <div class="row margin-bottom-20">
-                        <!--Profile Post-->
-                        <div class="col-sm-6">
-                            <div class="panel panel-profile no-bg">
-                                <div class="panel-heading overflow-h">
-                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-pencil"></i>Notes</h2>
-                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
-                                </div>
-                                <div id="scrollbar" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
-                                    <div class="profile-post color-one">
-                                        <span class="profile-post-numb">01</span>
-                                        <div class="profile-post-in">
-                                            <h3 class="heading-xs"><a href="#">Creative Blog</a></h3>
-                                            <p>How to market yourself as a freelance designer</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-post color-two">
-                                        <span class="profile-post-numb">02</span>
-                                        <div class="profile-post-in">
-                                            <h3 class="heading-xs"><a href="#">Codrops Collective #117</a></h3>
-                                            <p>Web Design &amp; Development News</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-post color-three">
-                                        <span class="profile-post-numb">03</span>
-                                        <div class="profile-post-in">
-                                            <h3 class="heading-xs"><a href="#">Sketch Toolbox</a></h3>
-                                            <p>Basic prototype of a package manager for Sketch</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-post color-four">
-                                        <span class="profile-post-numb">04</span>
-                                        <div class="profile-post-in">
-                                            <h3 class="heading-xs"><a href="#">Amazing Portfolio</a></h3>
-                                            <p>Create a free online portfolio lookbook with Readz</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-post color-five">
-                                        <span class="profile-post-numb">05</span>
-                                        <div class="profile-post-in">
-                                            <h3 class="heading-xs"><a href="#">Discover New Features</a></h3>
-                                            <p>More than 100+ amazing add-ons coming soon...</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-post color-six">
-                                        <span class="profile-post-numb">06</span>
-                                        <div class="profile-post-in">
-                                            <h3 class="heading-xs"><a href="#">Corporation Plans</a></h3>
-                                            <p>Discussion of new corporation plans</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-post color-seven">
-                                        <span class="profile-post-numb">07</span>
-                                        <div class="profile-post-in">
-                                            <h3 class="heading-xs"><a href="#">Project Updates</a></h3>
-                                            <p>New features of coming update</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Profile Post-->
-
-                        <!--Profile Event-->
-                        <div class="col-sm-6 md-margin-bottom-20">
-                            <div class="panel panel-profile no-bg">
-                                <div class="panel-heading overflow-h">
-                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i>Upcoming Events</h2>
-                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
-                                </div>
-                                <div id="scrollbar2" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark">
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>25</span>
-                                            <small>05, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">GitHub seminars in Japan.</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>31</span>
-                                            <small>06, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Bootstrap Update</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>07</span>
-                                            <small>08, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Apple Conference</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>22</span>
-                                            <small>10, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Backend Meeting</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>14</span>
-                                            <small>11, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Google Conference</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>05</span>
-                                            <small>12, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">FontAwesome Update</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Profile Event-->
-                    </div><!--/end row-->
-
-                    <hr>
-
-
-                    <hr>
-
-
-                    <hr>
-
-
-
+            <div align="center">
+                <iframe  width="850" height="475" src="//www.youtube.com/embed/9B7te184ZpQ?rel=0"
+                frameborder="100" allowfullscreen></iframe>
             </div>
-            <!-- End Profile Content -->
-        </div>
-    </div><!--/container-->
-    <!--=== End Profile ===-->
-
-    <!--=== Footer Version 1 ===-->
-    <div class="footer-v1">
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <!-- About -->
-                    <div class="col-md-3 md-margin-bottom-40">
-                        <a href="index-2.html"><img id="logo-footer" class="foot
-                        er-logo" src="static/assets/img/logo2-default.png" alt=""></a>
-                        <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
-                        <p>Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.</p>
-                    </div><!--/col-md-3-->
-                    <!-- End About -->
-
-                    <!-- Latest -->
-                    <div class="col-md-3 md-margin-bottom-40">
-                        <div class="posts">
-                            <div class="headline"><h2>Latest Posts</h2></div>
-                            <ul class="list-unstyled latest-list">
-                                <li>
-                                    <a href="#">Incredible content</a>
-                                    <small>May 8, 2014</small>
-                                </li>
-                                <li>
-                                    <a href="#">Best shoots</a>
-                                    <small>June 23, 2014</small>
-                                </li>
-                                <li>
-                                    <a href="#">New Terms and Conditions</a>
-                                    <small>September 15, 2014</small>
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!--/col-md-3-->
-                    <!-- End Latest -->
-
-                    <!-- Link List -->
-                    <div class="col-md-3 md-margin-bottom-40">
-                        <div class="headline"><h2>Useful Links</h2></div>
-                        <ul class="list-unstyled link-list">
-                            <li><a href="#">About us</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Portfolio</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Latest jobs</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Community</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Contact us</a><i class="fa fa-angle-right"></i></li>
-                        </ul>
-                    </div><!--/col-md-3-->
-                    <!-- End Link List -->
-
-                    <!-- Address -->
-                    <div class="col-md-3 map-img md-margin-bottom-40">
-                        <div class="headline"><h2>Contact Us</h2></div>
-                        <address class="md-margin-bottom-40">
-                            25, Lorem Lis Street, Orange <br />
-                            California, US <br />
-                            Phone: 800 123 3456 <br />
-                            Fax: 800 123 3456 <br />
-                            Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
-                        </address>
-                    </div><!--/col-md-3-->
-                    <!-- End Address -->
-                </div>
+    <div style="padding-top:35px">
+            <div class="text-center">
+                <button  class="btn-u pull-center ">Live Video Streaming</button>
+                       <button  class="btn-u pull-center">Upload Video From File</button>
             </div>
-        </div><!--/footer-->
-
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>
-                            2015 &copy; All Rights Reserved.
-                           <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | Powered by <a href="http://www.rabinsxp.com/">Rabins XP</a>
-
-                        </p>
-                    </div>
-
-                    <!-- Social Links -->
-                    <div class="col-md-5">
-                        <ul class="footer-socials list-inline">
-                            <li>
-                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
-                                    <i class="fa fa-skype"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google Plus">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linkedin">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
-                                    <i class="fa fa-pinterest"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-
-                              </ul>
-                    </div>
-                    <!-- End Social Links -->
-                </div>
+            <div class="text-center" style="padding-top:10px">
+                <button type="button" class="btn btn-primary" >Generate Graph</button>
             </div>
-        </div><!--/copyright-->
     </div>
-    <!--=== End Footer Version 1 ===-->
+
+    </div>
+
+<hr style="border-top: dotted 3px;" />
+
+
+
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->

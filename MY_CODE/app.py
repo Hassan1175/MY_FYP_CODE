@@ -59,6 +59,8 @@ def registration():
             return redirect(url_for('profile_main'))
         # return 'That username already exists!'
     return render_template('page_registration.html')
+
+
 @app.route('/profile')
 def profile_main():
     user = session["username"]
