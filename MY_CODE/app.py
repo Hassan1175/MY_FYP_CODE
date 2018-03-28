@@ -67,13 +67,16 @@ def profile_main():
     return render_template('page_profile.html',user=user)
 @app.route('/my_projects')
 def my_projects():
-    return render_template('page_profile_projects.html')
+    user = session["username"]
+    return render_template('page_profile_projects.html',user=user)
 @app.route('/my_history')
 def my_history():
-    return render_template('page_profile_history.html')
+    user = session["username"]
+    return render_template('page_profile_history.html',user =user)
 @app.route('/my_profile')
 def my_profile():
-    return render_template('page_profile_me.html')
+    user = session["username"]
+    return render_template('page_profile_me.html',user = user)
 if __name__ ==('__main__'):
     # app.secret_key == os.urandom(50)
     app.run(debug=True)
