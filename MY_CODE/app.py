@@ -1,20 +1,24 @@
-from flask import Flask, render_template, url_for, request, session, redirect,flash, message_flashed
+from flask import Flask, render_template, url_for, request, session, redirect,flash, message_flashed,Response
 from flask_pymongo import PyMongo
 import os
+from camera import VideoCamera
+import cv2
 
-
-
+global index_add_counter
 app= Flask(__name__)
+# vc = cv2.VideoCapture(0)
+
+
+J = 1
+
 # Here i am writing all code to connect my application with mongoDb and user authentications.
 app.config['MONGO_HOST'] ='localhost'
 app.config['MONGO_PORT'] = '27017'
 app.config['MONGO_DBNAME']="myfyp"
 
-
 app.config['SECRET_KEY'] = "You_r_secret"
 mongo =  PyMongo(app,config_prefix ="MONGO")
 # app.secret_key == "keep it secret"
-
 @app.route('/')
 def home():
   # if 'username' in session:
@@ -25,9 +29,9 @@ def home():
 def about():
     return render_template('page_about3.html')
 
-@app.route('/projects')
-def projects():
-    return render_template('page_profile_projects.html')
+@app.route('/contact')
+def contact():
+    return render_template('page_contact.html')
 
 
 @app.route('/login',methods = ['GET','POST'])
@@ -60,11 +64,24 @@ def registration():
         # return 'That username already exists!'
     return render_template('page_registration.html')
 
-
 @app.route('/profile')
 def profile_main():
     user = session["username"]
     return render_template('page_profile.html',user=user)
+def gen(camera):
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+@app.route('/video_feed')
+def video_feed():
+
+    # if J ==1:
+    return Response(gen(VideoCamera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
 @app.route('/my_projects')
 def my_projects():
     user = session["username"]

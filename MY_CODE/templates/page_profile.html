@@ -74,10 +74,10 @@
             <!-- End Topbar -->
 
             <!-- Toggle get grouped for better mobile display -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="fa fa-bars"></span>
-            </button>
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="fa fa-bars"></span>-->
+            <!--</button>-->
             <!-- End Toggle -->
         </div><!--/end container-->
 
@@ -125,13 +125,16 @@
             </div>
 
 
+
+
             <div align="center">
-                <iframe  width="850" height="475" src="//www.youtube.com/embed/9B7te184ZpQ?rel=0"
+                <iframe  width="650" height="500" src="{{url_for ('video_feed')}}"
                 frameborder="100" allowfullscreen></iframe>
             </div>
+
     <div style="padding-top:35px">
             <div class="text-center">
-                <button  class="btn-u pull-center ">Live Video Streaming</button>
+               <a href="#"> <button  class="btn-u pull-center">   Live Video Streaming</button></a>
                        <button  class="btn-u pull-center">Upload Video From File</button>
             </div>
             <div class="text-center" style="padding-top:10px">

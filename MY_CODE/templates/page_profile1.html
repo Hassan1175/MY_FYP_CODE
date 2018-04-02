@@ -5,7 +5,7 @@
 
 <!-- Cloned by RabinsXP.com-->
 <head>
-    <title>Profile Me</title>
+    <title>Dashboard</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -37,7 +37,6 @@
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" href="static/assets/css/pages/profile.css">
-    <link rel="stylesheet" href="static/assets/css/pages/shortcode_timeline2.css">
 
     <!-- CSS Theme -->
     <link rel="stylesheet" href="static/assets/css/theme-colors/default.css" id="style_color">
@@ -48,19 +47,19 @@
 </head>
 
 <body>
+
 <div class="wrapper">
-    <!--=== Header ===-->
     <div class="header">
         <div class="container">
             <!-- Logo -->
-            <a class="logo" href="{{url_for ('profile_main')}}">
+                <a class="logo" href="{{url_for ('profile_main')}}">
                 <img src="static/assets/img/logo1-default.png" alt="Logo">
             </a>
             <!-- End Logo -->
 
             <!-- Topbar -->
             <div class="topbar">
-             <ul class="loginbar pull-right">
+                <ul class="loginbar pull-right">
 
                     <li>{{user}}</li>
                     <!--<li><a href="{{url_for ('registration')}}">Registration</a></li>-->
@@ -68,18 +67,26 @@
                     <!--<li>{{ user }}</li>-->
                     <li> <a href="{{url_for ('login')}}"><u>Sign Out </u> </a></li>
 
+
+
                 </ul>
             </div>
             <!-- End Topbar -->
 
             <!-- Toggle get grouped for better mobile display -->
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
-                <!--<span class="sr-only">Toggle navigation</span>-->
-                <!--<span class="fa fa-bars"></span>-->
-            <!--</button>-->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
             <!-- End Toggle -->
         </div><!--/end container-->
 
+
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+            <div class="container">
+
+            </div>
+        </div><!--/navbar-collapse-->
     </div>
     <!--=== End Header ===-->
 
@@ -89,7 +96,8 @@
             <!--Left Sidebar-->
             <div class="col-md-3 md-margin-bottom-40">
                 <img class="img-responsive profile-img margin-bottom-20" src="static/assets/img/team/img32-md.jpg" alt="">
-                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+
+           <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                     <li class="list-group-item active">
                         <a href="{{url_for ('profile_main')}}"><i class="fa fa-bar-chart-o"></i> Home</a>
                     </li>
@@ -109,104 +117,34 @@
                     </li>
 
                 </ul>
-
-
-
-                <div class="margin-bottom-50"></div>
-
-
+                <!--Datepicker-->
+                <form action="#" id="sky-form2" class="sky-form">
+                    <div id="inline-start"></div>
+                </form>
                 <!--End Datepicker-->
             </div>
-            <!--End Left Sidebar-->
-
-            <!-- Profile Content -->
-            <div class="col-md-9">
-                <div class="profile-body">
 
 
-                    <div class="profile-bio">
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-5">
-
-
-                                <img  class="img-responsive md-margin-bottom-10" src="static/assets/img/team/img32-md.jpg" >
-
-                                <a class="btn-u btn-u-sm" href="#">Change Picture</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="panel panel-profile">
-                        <div class="panel-body">
-                            <form class="sky-form" id="sky-form4" action="#">
-                                        <dl class="dl-horizontal">
-                                            <dt>Username</dt>
-                                            <dd>
-                                                <section>
-                                                    <label class="input">
-                                                        <i class="icon-append fa fa-user"></i>
-                                                        <input type="text" placeholder="Username" name="username">
-                                                        <b class="tooltip tooltip-bottom-right">Needed to enter the website</b>
-                                                    </label>
-                                                </section>
-                                            </dd>
-                                            <dt>Email address</dt>
-                                            <dd>
-                                                <section>
-                                                    <label class="input">
-                                                        <i class="icon-append fa fa-envelope"></i>
-                                                        <input type="email" placeholder="Email address" name="email">
-                                                        <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
-                                                    </label>
-                                                </section>
-                                            </dd>
-                                            <dt>Enter your password</dt>
-                                            <dd>
-                                                <section>
-                                                    <label class="input">
-                                                        <i class="icon-append fa fa-lock"></i>
-                                                        <input type="password" id="password" name="password" placeholder="Password">
-                                                        <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
-                                                    </label>
-                                                </section>
-                                            </dd>
-                                            <dt>Confirm Password</dt>
-                                            <dd>
-                                                <section>
-                                                    <label class="input">
-                                                        <i class="icon-append fa fa-lock"></i>
-                                                        <input type="password" name="passwordConfirm" placeholder="Confirm password">
-                                                        <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
-                                                    </label>
-                                                </section>
-                                            </dd>
-                                        </dl>
-                                        <div class ="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn-u btn-u-default">Cancel</button>
-                                        <button class="btn-u" type="submit">Save Changes</button>
-                                        </div>
-                                    </form>
-                        </div>
-                    </div>
-                    <!--End Timeline-->
-
-                    <hr>
-
-                    <div class="row">
-
-
-                        <!--End Design Skills-->
-                    </div><!--/end row-->
-                </div>
+            <div align="center">
+                <iframe  width="650" height="500" src="{{url_for ('video_feed')}}"
+                frameborder="100" allowfullscreen></iframe>
             </div>
-            <!-- End Profile Content -->
-        </div>
+
+    <div style="padding-top:35px">
+            <div class="text-center">
+               <a href="#"> <button  class="btn-u pull-center">   Live Video Streaming</button></a>
+                       <button  class="btn-u pull-center">Upload Video From File</button>
+            </div>
+            <div class="text-center" style="padding-top:10px">
+                <button type="button" class="btn btn-primary" >Generate Graph</button>
+            </div>
     </div>
-    <!--=== End Profile ===-->
+
+    </div>
+
 <hr style="border-top: dotted 3px;" />
+
+
 
 </div><!--/wrapper-->
 
@@ -217,7 +155,8 @@
 <!-- JS Implementing Plugins -->
 <script type="text/javascript" src="static/assets/plugins/back-to-top.js"></script>
 <script type="text/javascript" src="static/assets/plugins/smoothScroll.js"></script>
-<script type="text/javascript" src="static/assets/plugins/circles-master/circles.js"></script>
+<script type="text/javascript" src="static/assets/plugins/counter/waypoints.min.js"></script>
+<script type="text/javascript" src="static/assets/plugins/counter/jquery.counterup.min.js"></script>
 <script type="text/javascript" src="static/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="static/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- JS Customization -->
@@ -225,14 +164,13 @@
 <!-- JS Page Level -->
 <script type="text/javascript" src="static/assets/js/app.js"></script>
 <script type="text/javascript" src="static/assets/js/plugins/datepicker.js"></script>
-<script type="text/javascript" src="static/assets/js/plugins/circles-master.js"></script>
 <script type="text/javascript" src="static/assets/js/plugins/style-switcher.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
+        App.initCounter();
         App.initScrollBar();
         Datepicker.initDatepicker();
-        CirclesMaster.initCirclesMaster1();
         StyleSwitcher.initStyleSwitcher();
     });
 </script>
@@ -241,7 +179,7 @@
     <script src="static/assets/plugins/html5shiv.js"></script>
     <script src="static/assets/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
-
+</div>
 </body>
 
 <!-- Cloned by RabinsXP.com-->
