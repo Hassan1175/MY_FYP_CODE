@@ -8,8 +8,10 @@ global index_add_counter
 app= Flask(__name__)
 # vc = cv2.VideoCapture(0)
 
-
-J = 1
+def hello (img):
+   photo = cv2.imread(img)
+   pic = cv2.imshow(photo)
+   return pic
 
 # Here i am writing all code to connect my application with mongoDb and user authentications.
 app.config['MONGO_HOST'] ='localhost'
