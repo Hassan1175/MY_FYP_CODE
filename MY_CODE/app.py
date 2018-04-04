@@ -70,6 +70,7 @@ def registration():
 def profile_main():
     user = session["username"]
     return render_template('page_profile.html',user=user)
+
 def gen(camera):
     while True:
         frame = camera.get_frame()
@@ -78,12 +79,8 @@ def gen(camera):
 
 @app.route('/video_feed')
 def video_feed():
-
-    # if J ==1:
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
 @app.route('/my_projects')
 def my_projects():
     user = session["username"]
