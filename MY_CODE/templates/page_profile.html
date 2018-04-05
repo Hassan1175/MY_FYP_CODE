@@ -137,25 +137,32 @@
                 <!--frameborder="100" allowfullscreen></iframe>-->
             </div>
 
-    <div style="padding-top:35px">
 
-            <div class="text-center">
-               <a href="#"> <button id="video_stream"    class="btn-u pull-center">   Live Video Streaming</button></a>
-                       <button  class="btn-u pull-center">Upload Video From File</button>
+              <div  id="head_text" class="headline-center">
+            <h1 style="padding-top:30px" > True-Face </h1>
+            <p>Ture-Face the application which can be used to detect <br>
+            human facial expression from single or multiple face.Then a graphical representation<br>
+            of facial expression can also be generated from video input. Every user will have to <br>
+                register his account in order to use that application.
+            </p>
+                   <hr>
+                   <hr>
+              </div>
+            <div id="home_buttons" align="center">
+
+                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:200px">   Live Video Streaming</button></a></li>
+                    <li style="margin-bottom: 15px;">  <button  class="btn-u pull-center" style="width:200px">Upload Video From File</button></li>
+                    <li style="margin-bottom: 15px;"><button  class="btn-u pull-center" style="width:200px" >Upload Video From File</button></li>
             </div>
-            <div class="text-center" style="padding-top:10px">
-                <button type="button" class="btn btn-primary" >Generate Graph</button>
+            <div id="Stop_button" align="center">
+                <!--<a href="#"> <button id="stop_stream"class="btn-u pull-center" style="width:200px"> Stop Live Streaming</button></a>-->
             </div>
+            <hr>
     </div>
-
     </div>
-
 <hr style="border-top: dotted 3px;" />
 
-
-
 </div><!--/wrapper-->
-
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery-migrate.min.js"></script>
@@ -182,18 +189,23 @@
         StyleSwitcher.initStyleSwitcher();
     });
 
-
-
     $("#video_stream").click(function(){
     console.log("Clicked");
-    $("#div_video").append('<iframe   width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
-)})
+     $("#head_text").hide()
+     $("#home_buttons").hide()
+     $("#Stop_button").replaceWith('<a href="#"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
 
 
+    $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
+)}
+<!--$("stop_stream").click(function (){-->
+  <!--$("#head_text").show()-->
+    <!--$("#Stop_button").hide()-->
+      <!--$("#home_buttons").show()-->
+        <!--$("#div_video").hide()-->
+<!--)}-->
 
-
-
-
+)
 </script>
 <!--[if lt IE 9]>
     <script src="static/assets/plugins/respond.js"></script>

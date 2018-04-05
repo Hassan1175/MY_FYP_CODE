@@ -2,16 +2,13 @@ from flask import Flask, render_template, url_for, request, session, redirect,fl
 from flask_pymongo import PyMongo
 import os
 from camera import VideoCamera
+
+
+
 import cv2
 
 global index_add_counter
 app= Flask(__name__)
-# vc = cv2.VideoCapture(0)
-
-def hello (img):
-   photo = cv2.imread(img)
-   pic = cv2.imshow(photo)
-   return pic
 
 # Here i am writing all code to connect my application with mongoDb and user authentications.
 app.config['MONGO_HOST'] ='localhost'
@@ -70,13 +67,11 @@ def registration():
 def profile_main():
     user = session["username"]
     return render_template('page_profile.html',user=user)
-
 def gen(camera):
     while True:
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(VideoCamera()),
@@ -93,6 +88,16 @@ def my_history():
 def my_profile():
     user = session["username"]
     return render_template('page_profile_me.html',user = user)
+
+#
+# @app.route('/release_vidoe')
+# def release_vidoe():
+#     user = session["username"]
+#
+#     VideoCamera.destroy()
+#     return render_template('page_profile.html',user=user)
+
+
 if __name__ ==('__main__'):
     # app.secret_key == os.urandom(50)
     app.run(debug=True)
