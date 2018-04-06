@@ -2,9 +2,7 @@ from flask import Flask, render_template, url_for, request, session, redirect,fl
 from flask_pymongo import PyMongo
 import os
 from camera import VideoCamera
-
-
-
+from threading import Thread
 import cv2
 
 global index_add_counter
@@ -67,15 +65,24 @@ def registration():
 def profile_main():
     user = session["username"]
     return render_template('page_profile.html',user=user)
+
+
 def gen(camera):
     while True:
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+
+        # frame = Thread(target=camera.get_frame())
+        # yield (b'--frame\r\n'
+        #        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
 @app.route('/my_projects')
 def my_projects():
     user = session["username"]
@@ -88,6 +95,16 @@ def my_history():
 def my_profile():
     user = session["username"]
     return render_template('page_profile_me.html',user = user)
+
+@app.route('/User_Guide')
+def User_Guide():
+    user = session["username"]
+    return render_template('User_guide.html',user = user)
+
+@app.route('/New_Project')
+def New_Project():
+    user = session["username"]
+    return render_template('New_Project.html',user = user)
 
 #
 # @app.route('/release_vidoe')

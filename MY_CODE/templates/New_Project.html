@@ -5,7 +5,7 @@
 
 <!-- Cloned by RabinsXP.com-->
 <head>
-    <title>Dashboard</title>
+    <title> My Projects </title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -47,12 +47,13 @@
 </head>
 
 <body>
+<!--=== End Style Switcher ===-->
 
 <div class="wrapper">
-    <div class="header">
+<div class="header">
         <div class="container">
             <!-- Logo -->
-                <a class="logo" href="{{url_for ('profile_main')}}">
+           <a class="logo" href="{{url_for ('profile_main')}}">
                 <img src="static/assets/img/logo1-default.png" alt="Logo">
             </a>
             <!-- End Logo -->
@@ -78,88 +79,139 @@
                 <!--<span class="sr-only">Toggle navigation</span>-->
                 <!--<span class="fa fa-bars"></span>-->
             <!--</button>-->
-            <!-- End Toggle -->
+            <!--&lt;!&ndash; End Toggle &ndash;&gt;-->
         </div><!--/end container-->
 
-
-        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
-            <div class="container">
-
-            </div>
-        </div><!--/navbar-collapse-->
-    </div>
-    <!--=== End Header ===-->
-
-    <!--=== Profile ===-->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        </div>    <!--=== Profile ===-->
     <div class="container content profile">
     	<div class="row">
             <!--Left Sidebar-->
             <div class="col-md-3 md-margin-bottom-40">
                 <img class="img-responsive profile-img margin-bottom-20" src="static/assets/img/team/img32-md.jpg" alt="">
-
            <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                     <li class="list-group-item active">
                         <a href="{{url_for ('profile_main')}}"><i class="fa fa-bar-chart-o"></i> Home</a>
                     </li>
                     <li class="list-group-item">
                         <a href="{{url_for ('my_projects')}}"><i class="fa fa-cubes"></i> My Projects</a>
-                    <!--</li>-->
-                      <!--<li class="list-group-item">-->
-                        <!--<a href="page_profile_comments.html"><i class="fa fa-cubes"></i> My Notes</a>-->
-                    <!--</li>-->
-
+                    </li>
                     <li class="list-group-item">
                         <a href="{{url_for ('my_history')}}"><i class="fa fa-comments"></i> History</a>
                     </li>
-
                        <li class="list-group-item">
                         <a href="{{url_for ('my_profile')}}"><i class="fa fa-user"></i> My Profile</a>
                     </li>
-
                 </ul>
-                <!--Datepicker-->
+                <div class="margin-bottom-50"></div>
 
+                <!--Da  tepicker-->
+                <form action="#" id="sky-form2" class="sky-form">
+                    <div id="inline-start"></div>
+                </form>
                 <!--End Datepicker-->
             </div>
+            <!--End Left Sidebar-->
 
 
-            <div align="center" id="div_video">
+            <!-- Profile Content -->
 
-            <!--< align="center">-->
-                <!--<img src="static/assets/img/bore128.jpg" width="650" height="500">-->
-                <!--< img width="650" height="500" src="bore128.png"/>-->
-                <!--<iframe   width="650" height="500" src="{{url_for ('video_feed')}}"-->
-                            <!--frameborder="100" allowfullscreen style="display: none;"></iframe>-->
 
-                <!--<iframe  width="650" height="500" src="{{url_for ('video_feed')}}"-->
-                <!--frameborder="100" allowfullscreen></iframe>-->
+
+            <div class="container content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-2">
+                <div class="reg-header"  style="padding-top:-10px">
+                    <u><h2>Create a new project</h2></u>
+                        </div>
+
+
+    			<form  class="sky-form contact-style">
+                    <fieldset class="no-padding">
+                        <label>Project Title <span class="color-red">*</span></label>
+                        <div class="row sky-space-20">
+                            <div class="col-md-7 col-md-offset-0">
+                                <div>
+                                    <input type="text" name="name" id="name" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <label>Date <span class="color-red">*</span></label>
+
+
+<div class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
+    <input size="16" type="text" value="" readonly>
+    <span class="add-on"><i class="icon-remove"></i></span>
+    <span class="add-on"><i class="icon-calendar"></i></span>
+</div>
+
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+</script>
+
+
+
+
+
+
+                        <label>Message <span class="color-red">*</span></label>
+                        <div class="row sky-space-20">
+                            <div class="col-md-11 col-md-offset-0">
+                                <div>
+                                    <textarea rows="8" name="message" id="message" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><button type="submit" class="btn-u">Send Message</button></p>
+                    </fieldset>
+
+                    <div class="message">
+                        <i class="rounded-x fa fa-check"></i>
+                        <p>Your message was successfully sent!</p>
+                    </div>
+                </form>
+
             </div>
+        </div>
 
 
-              <div  id="head_text" class="headline-center">
-            <h1 style="padding-top:30px" > True-Face </h1>
-            <p>Ture-Face the application which can be used to detect <br>
-            human facial expression from single or multiple face.Then a graphical representation<br>
-            of facial expression can also be generated from video input. Every user will have to <br>
-                register his account in order to use that application.
-            </p>
-                   <hr>
-                   <hr>
-              </div>
-            <div id="home_buttons" align="center">
-                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Live Video Streaming (DEMO)</button></a></li>
-                <li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Create New Project</button></a></li>
-                <li style="margin-bottom: 15px;"><a href="{{url_for('User_Guide')}}"><button  class="btn-u pull-center" style="width:205px" >User Guide</button></a></li>
-            </div>
-            <div id="Stop_button" align="center">
-                <!--<a href="#"> <button id="stop_stream"class="btn-u pull-center" style="width:200px"> Stop Live Streaming</button></a>-->
-            </div>
-            <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+            <!-- End Profile Content -->
+        </div>
     </div>
-    </div>
+    <!--=== End Profile ===-->
 <hr style="border-top: dotted 3px;" />
 
 </div><!--/wrapper-->
+
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery-migrate.min.js"></script>
@@ -180,39 +232,18 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
-        App.initCounter();
         App.initScrollBar();
         Datepicker.initDatepicker();
         StyleSwitcher.initStyleSwitcher();
     });
-
-    $("#video_stream").click(function(){
-    console.log("Clicked");
-     $("#head_text").hide()
-     $("#home_buttons").hide()
-     $("#Stop_button").replaceWith('<a href="#"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
-
-
-    $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
-)});
-
-<!--$("#stop_stream").click(function (){-->
-  <!--$("#head_text").show();-->
-    <!--&lt;!&ndash;$("#Stop_button").hide()&ndash;&gt;-->
-      <!--$("#home_buttons").show()-->
-        <!--&lt;!&ndash;$("#div_video").hide()&ndash;&gt;-->
-<!--)})-->
-$('#stop_stream').click(function(){
-console.log("stop stream clicked");
-$("#div_video").hide()
-});
 </script>
 <!--[if lt IE 9]>
     <script src="static/assets/plugins/respond.js"></script>
     <script src="static/assets/plugins/html5shiv.js"></script>
     <script src="static/assets/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
-</div>
+
+
 </body>
 
 <!-- Cloned by RabinsXP.com-->
