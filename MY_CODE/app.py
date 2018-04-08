@@ -46,7 +46,6 @@ def login():
             flash("Invalid Username/Password")
     return render_template('page_login.html')
 
-
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():
     if request.method == 'POST':
@@ -55,9 +54,13 @@ def registration():
         if existing_user is None:
             # hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             password = request.form['pass']
-            users.insert({'name': request.form['username'], 'password': password})
-            session['username'] = request.form['username']
-            return redirect(url_for('profile_main'))
+            Email = request.form['Email']
+            if request.form['username']=="" or  request.form['pass'] =="" or request.form['Email'] =="":
+                flash("Please fill all entries")
+            else:
+                users.insert({'name': request.form['username'], 'password': password, 'email':Email})
+                session['username'] = request.form['username']
+                return redirect(url_for('profile_main'))
         # return 'That username already exists!'
     return render_template('page_registration.html')
 
@@ -66,14 +69,11 @@ def profile_main():
     user = session["username"]
     return render_template('page_profile.html',user=user)
 
-
 def gen(camera):
     while True:
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-
-
         # frame = Thread(target=camera.get_frame())
         # yield (b'--frame\r\n'
         #        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
@@ -82,6 +82,7 @@ def gen(camera):
 def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 @app.route('/my_projects')
 def my_projects():
@@ -101,18 +102,22 @@ def User_Guide():
     user = session["username"]
     return render_template('User_guide.html',user = user)
 
-@app.route('/New_Project')
+@app.route('/New_Project' , methods=['POST', 'GET'])
 def New_Project():
     user = session["username"]
-    return render_template('New_Project.html',user = user)
+    if (request.method == 'POST'):
+        projects = mongo.db.projects
 
-#
-# @app.route('/release_vidoe')
-# def release_vidoe():
-#     user = session["username"]
-#
-#     VideoCamera.destroy()
-#     return render_template('page_profile.html',user=user)
+        Project_title =request.form['Project_title']
+        Date = request.form ['Date']
+        Description = request.form['Description']
+
+        if request.form['Project_title']=="" or  request.form ['Date']=="":
+            flash("Please fill all mandatory enteries")
+        else:
+            projects.insert({"Project_title":Project_title, "Date":Date ,"Description":Description})
+            return render_template("page_project_started.html",user = user)
+    return render_template('New_Project.html',user = user)
 
 
 if __name__ ==('__main__'):

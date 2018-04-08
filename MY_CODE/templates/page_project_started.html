@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 
 <!-- Cloned by RabinsXP.com-->
 <head>
@@ -74,10 +75,10 @@
             <!-- End Topbar -->
 
             <!-- Toggle get grouped for better mobile display -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="fa fa-bars"></span>
-            </button>
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="fa fa-bars"></span>-->
+            <!--</button>-->
             <!-- End Toggle -->
         </div><!--/end container-->
 
@@ -118,36 +119,65 @@
 
                 </ul>
                 <!--Datepicker-->
-                <form action="#" id="sky-form2" class="sky-form">
-                    <div id="inline-start"></div>
-                </form>
+
                 <!--End Datepicker-->
             </div>
 
 
-            <div align="center">
-                <iframe  width="650" height="500" src="{{url_for ('video_feed')}}"
-                frameborder="100" allowfullscreen></iframe>
+            <div align="center" id="div_video">
+
+            <!--< align="center">-->
+                <!--<img src="static/assets/img/bore128.jpg" width="650" height="500">-->
+                <!--< img width="650" height="500" src="bore128.png"/>-->
+                <!--<iframe   width="650" height="500" src="{{url_for ('video_feed')}}"-->
+                            <!--frameborder="100" allowfullscreen style="display: none;"></iframe>-->
+
+                <!--<iframe  width="650" height="500" src="{{url_for ('video_feed')}}"-->
+                <!--frameborder="100" allowfullscreen></iframe>-->
             </div>
 
-    <div style="padding-top:35px">
-            <div class="text-center">
-               <a href="#"> <button  class="btn-u pull-center">   Live Video Streaming</button></a>
-                       <button  class="btn-u pull-center">Upload Video From File</button>
+
+              <!--<div  id="head_text" align="center">-->
+                  <!--<h1 style="padding-top:30px" >Welcome to  <u>True-Face</u> </h1>-->
+                    <!--<ul>-->
+
+                      <!--<li>Click Live Video Streaming button if you want to get live video from camera.  </li>-->
+                      <!--<li>Click Upload Video From File button if you want to upload a video from a computer.</li>-->
+
+
+
+
+                  <!--</ul>-->
+                   <!--<hr>-->
+                   <!--<hr>-->
+              <!--</div>-->
+            <!---->
+            <!---->
+
+
+            <div id="head_text" align="center">
+                <h1>Welcome to <u>True-Face</u></h1>
+                    <li style="margin-top: 15px;"> Live Video Streaming button if you want to get live video from camera</li>
+                <!--<li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Start Video Streaming</button></a></li>-->
+                <li style="margin-bottom: 15px;">Upload Video From File button if you want to upload a video from a computer.</li>
             </div>
-            <div class="text-center" style="padding-top:10px">
-                <button type="button" class="btn btn-primary" >Generate Graph</button>
+                    <hr>
+                   <hr>
+
+            <div id="home_buttons" align="center">
+                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Live Video Streaming Testing</button></a></li>
+                <!--<li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Start Video Streaming</button></a></li>-->
+                <li style="margin-bottom: 15px;"><a href="{{url_for('User_Guide')}}"><button  class="btn-u pull-center" style="width:205px" >Upload Video From File</button></a></li>
             </div>
+            <div id="Stop_button" align="center">
+                <!--<a href="#"> <button id="stop_stream"class="btn-u pull-center" style="width:200px"> Stop Live Streaming</button></a>-->
+            </div>
+            <hr>
     </div>
-
     </div>
-
 <hr style="border-top: dotted 3px;" />
 
-
-
 </div><!--/wrapper-->
-
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery-migrate.min.js"></script>
@@ -173,6 +203,27 @@
         Datepicker.initDatepicker();
         StyleSwitcher.initStyleSwitcher();
     });
+
+    $("#video_stream").click(function(){
+    console.log("Clicked");
+     $("#head_text").hide()
+     $("#home_buttons").hide()
+     $("#Stop_button").replaceWith('<a href="#"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
+
+
+    $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
+)});
+
+<!--$("#stop_stream").click(function (){-->
+  <!--$("#head_text").show();-->
+    <!--&lt;!&ndash;$("#Stop_button").hide()&ndash;&gt;-->
+      <!--$("#home_buttons").show()-->
+        <!--&lt;!&ndash;$("#div_video").hide()&ndash;&gt;-->
+<!--)})-->
+$('#stop_stream').click(function(){
+console.log("stop stream clicked");
+$("#div_video").hide()
+});
 </script>
 <!--[if lt IE 9]>
     <script src="static/assets/plugins/respond.js"></script>
