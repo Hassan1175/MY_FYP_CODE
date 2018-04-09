@@ -71,6 +71,7 @@ def profile_main():
 
 def gen(camera):
     while True:
+
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
@@ -120,6 +121,17 @@ def New_Project():
     return render_template('New_Project.html',user = user)
 
 
+
+
+@app.route('/profilee')
+def release():
+    #here i am jsut initialzing the class.. cos expect that it was not working
+    p = VideoCamera()
+    user = session["username"]
+    p.destroy()
+    return render_template('page_profile.html',user=user)
+
+
 if __name__ ==('__main__'):
     # app.secret_key == os.urandom(50)
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)

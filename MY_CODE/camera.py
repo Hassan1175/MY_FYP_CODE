@@ -15,8 +15,9 @@ class VideoCamera(object):
 
         self.video = cv2.VideoCapture(0)
 
-    # def destroy (self):
-    #     self.video.release()
+    def destroy(self):
+        self.video.release()
+
 
     def get_frame(self):
         pickle_in = open("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\dlib_normalized.pickle", "rb")

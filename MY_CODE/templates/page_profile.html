@@ -117,9 +117,7 @@
                     </li>
 
                 </ul>
-                <!--Datepicker-->
 
-                <!--End Datepicker-->
             </div>
 
 
@@ -185,12 +183,11 @@
         Datepicker.initDatepicker();
         StyleSwitcher.initStyleSwitcher();
     });
-
     $("#video_stream").click(function(){
     console.log("Clicked");
      $("#head_text").hide()
      $("#home_buttons").hide()
-     $("#Stop_button").replaceWith('<a href="#"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
+     $("#Stop_button").replaceWith('<a href="{{url_for('release')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
 
 
     $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
