@@ -9,16 +9,13 @@ import cv2
 import os
 import mpmath
 import numpy as np
-
 class VideoCamera(object):
     def __init__(self):
 
+        self.count = 0
         self.video = cv2.VideoCapture(0)
-
     def destroy(self):
         self.video.release()
-
-
     def get_frame(self):
         pickle_in = open("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\dlib_normalized.pickle", "rb")
         # pickle_in = open("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\dlib_normalized_full.pickle","rb")
@@ -26,9 +23,11 @@ class VideoCamera(object):
         B=0
         while(True):
             ret, frame = self.video.read()
+
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             B += 1
             if B % 5 == 0:
+                return_list = []
                 face = detector(gray, 0)
                 for (J, rect) in enumerate(face):
                     shap = predictor(gray, rect)
@@ -62,7 +61,13 @@ class VideoCamera(object):
                         final.append(F)
                     # print(final)
                     numpy_array = np.array(final)
+
                     prediction = model.predict([numpy_array])[0]
+
+                    file_storage = "C:\\Users\\ADMIN\\Desktop\\Code_pics" + "\\" + prediction + str(self.count) + '.jpg'
+                    cv2.imwrite(file_storage, frame)
+                    self.count += 1
+
 
                     # predict.append(prediction)
                     (x, y, w, h) = face_utils.rect_to_bb(rect)
@@ -76,7 +81,11 @@ class VideoCamera(object):
                     cv2.circle(frame, (centre_x, centre_y), 1, (0, 0, 0), 10)
                     for (x, y) in shap:
                         cv2.circle(frame, (x, y), 1, (0, 0, 255), 2)
-                        print(x,y)
-                        print("done")
+                        cv2.line(frame,(centre_x,centre_y),(x,y),(0,255,1) )
+                        # print("done")
                     ret, jpeg = cv2.imencode('.jpg', frame)
+                    # yield jpeg.tobytes( )
                     return jpeg.tobytes()
+
+                #     return_list.append( jpeg.tobytes())
+                # return return_list
