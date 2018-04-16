@@ -84,8 +84,8 @@ class VideoCamera(object):
                         cv2.line(frame,(centre_x,centre_y),(x,y),(0,255,1) )
                         # print("done")
                     ret, jpeg = cv2.imencode('.jpg', frame)
-                    # yield jpeg.tobytes( )
-                    return jpeg.tobytes()
+                    yield jpeg.tobytes( )
+                    # return jpeg.tobytes()
 
                 #     return_list.append( jpeg.tobytes())
                 # return return_list

@@ -56,9 +56,6 @@
            <a class="logo" href="{{url_for ('profile_main')}}">
                 <img src="static/assets/img/logo1-default.png" alt="Logo">
             </a>
-            <!-- End Logo -->
-
-            <!-- Topbar -->
             <div class="topbar">
                 <ul class="loginbar pull-right">
 
@@ -67,23 +64,10 @@
                     <li class="topbar-devider"></li>
                     <!--<li>{{ user }}</li>-->
                     <li> <a href="{{url_for ('login')}}"><u>Sign Out </u> </a></li>
-
-
-
                 </ul>
             </div>
-            <!-- End Topbar -->
 
-            <!-- Toggle get grouped for better mobile display -->
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
-                <!--<span class="sr-only">Toggle navigation</span>-->
-                <!--<span class="fa fa-bars"></span>-->
-            <!--</button>-->
-            <!--&lt;!&ndash; End Toggle &ndash;&gt;-->
-        </div><!--/end container-->
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        </div>    <!--=== Profile ===-->
+        </div>
     <div class="container content profile">
     	<div class="row">
             <!--Left Sidebar-->
@@ -105,102 +89,39 @@
                 </ul>
                 <div class="margin-bottom-50"></div>
 
-                <!--Da  tepicker-->
-                <form action="#" id="sky-form2" class="sky-form">
-                    <div id="inline-start"></div>
-                </form>
-                <!--End Datepicker-->
+
             </div>
             <!--End Left Sidebar-->
 
             <!-- Profile Content -->
-            <div class="col-md-9">
-                <div class="profile-body">
-                    <!--Projects-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="easy-block-v1">
-                                <img class="img-responsive" src="static/assets/img/main/img12.jpg" alt="">
-                                <div class="easy-block-v1-badge rgba-red">Web Design</div>
-                            </div>
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Rigging in Autodesk 3Ds Max</a></h2>
-                                <hr>
+             <div class="reg-header" align="center">
+                        <h2>Details About Your Projects</h2>
+                    </div>
+            <div align="center">
+                    <div style="padding-top:40px" align="center">
+                    <table border="1" frame = "box" width="500px">
+                        <tr>
+                            <th id="title" style="padding-left:40px"> <h3>Project Title</h3></th>
+                            <th style="padding-left:70px"> <h3>Project Description</h3></th>
+                        </tr>
+                      <tbody id="res">
 
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing. Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                <br>
-
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="service-or easy-block-v2 no-margin-bottom">
-                                <img class="img-responsive" src="static/assets/img/main/img16.jpg" alt="">
-                                <div class="easy-bg-v2 rgba-default">Unify</div>
-                            </div>
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Getting Started Photography</a></h2>
-                                <hr>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing. Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                <br>
-
-
-                            </div>
-
-                        </div>
-                    </div><!--/end row-->
-                    <!--End Projects-->
-
-                    <hr>
-
-                    <!--Projects-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="easy-block-v1">
-                                <img class="img-responsive" src="static/assets/img/main/img17.jpg" alt="">
-                                <div class="easy-block-v1-badge rgba-purple">Graphic Design</div>
-                            </div>
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Rigging in Autodesk 3Ds Max</a></h2>
-                                <hr>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing. Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                <br>
-
-
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="service-or easy-block-v2 no-margin-bottom">
-                                <img class="img-responsive" src="static/assets/img/main/img18.jpg" alt="">
-                                <div class="easy-bg-v2 rgba-blue">Nokia</div>
-                            </div>
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Getting Started Photography</a></h2>
-                                <hr>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing. Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                <br>
-
-                            </div>
-
-                        </div>
-                    </div><!--/end row-->
-                    <!--End Projects-->
-
-
-                </div>
+                    {% for project in projects %}
+                        <tr >
+                          <td align="center" height="60px" >{{project.Project_title}}</td>
+                            <td align="center"> {{project.Description}} </td>
+                            <td>  <button  type="submit" class="btn-u pull-right delete_data">Remove</button></td>
+                        </tr>
+                    {%endfor %}
+                      </tbody>
+                    </table>
+                    </div>
             </div>
-            <!-- End Profile Content -->
         </div>
     </div>
-    <!--=== End Profile ===-->
 <hr style="border-top: dotted 3px;" />
 
-</div><!--/wrapper-->
+</div>
 
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery.min.js"></script>
@@ -226,6 +147,29 @@
         Datepicker.initDatepicker();
         StyleSwitcher.initStyleSwitcher();
     });
+
+
+    $(".delete_data").click(function () {
+var cells = $(this).closest("tr").children("td");
+var title = cells.eq(0).text();
+var disp = cells.eq(1).text();
+var payload = {
+'title': title,
+'desc': disp
+};
+
+  $.ajax({
+      url:'/my_projects',
+      data: payload,
+      type: 'post',
+      success: function(response){
+
+      <!--alert(JSON.stringify(resp));-->
+      }})
+console.log(title);
+console.log(disp);
+});
+
 </script>
 <!--[if lt IE 9]>
     <script src="static/assets/plugins/respond.js"></script>
@@ -233,8 +177,7 @@
     <script src="static/assets/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
 
-
+</div>
 </body>
-
 <!-- Cloned by RabinsXP.com-->
 </html>

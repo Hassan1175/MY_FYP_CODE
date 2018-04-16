@@ -65,8 +65,6 @@ def registration():
     return render_template('page_registration.html')
 
 
-
-
 @app.route('/profile')
 def profile_main():
     user = session["username"]
@@ -75,12 +73,15 @@ def profile_main():
 
 def gen(cam):
     while True:
-        frame = cam.get_frame()
-        # frame = frame.tobytes()
-        # for pic in frame:
+    #     frame = cam.get_frame()
+    #     # frame = frame.tobytes()
+    #     # for pic in frame:
+    #     yield (b'--frame\r\n'
+    #            b'Content-Type: image/jpeg\r\n\r\n' + pic+ b'\r\n\r\n')
+       for frame in cam.get_frame():
+       #  f1 = next(cam.get_frame())
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-
 
 @app.route('/video_feed')
 def video_feed():
@@ -88,10 +89,31 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-@app.route('/my_projects')
+
+@app.route('/my_projects', methods=['GET','POST'])
 def my_projects():
     user = session["username"]
-    return render_template('page_profile_projects.html',user=user)
+    if request.method=='POST':
+        title=request.form['title']
+        disp = request.form['desc']
+        # print(title)
+        # print(disp)
+        project = mongo.db.projects
+        project.remove({"Project_title": title}, {"Description": disp})
+        # return render_template('page_profile_projects.html')
+    projects = mongo.db.projects.find({'user': user})
+    return render_template('page_profile_projects.html',user=user, projects = projects)
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/my_history')
 def my_history():
     user = session["username"]
@@ -123,17 +145,13 @@ def New_Project():
             return render_template("page_project_started.html",user = user)
     return render_template('New_Project.html',user = user)
 
-
-
-
-@app.route('/profilee')
+@app.route('/profile')
 def release():
     #here i am jsut initialzing the class.. cos expect that it was not working
     p = VideoCamera()
     user = session["username"]
     p.destroy()
     return render_template('page_profile.html',user=user)
-
 
 if __name__ ==('__main__'):
     # app.secret_key == os.urandom(50)
