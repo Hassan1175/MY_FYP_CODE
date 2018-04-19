@@ -1,3 +1,4 @@
+
 import dlib
 from imutils import face_utils
 dlib_path = "dlibb/shape_predictor_68_face_landmarks.dat"
@@ -7,13 +8,25 @@ import argparse
 import pickle
 import cv2
 import os
+import socket
+import time
 import mpmath
 import numpy as np
+import csv
+
 class VideoCamera(object):
     def __init__(self):
+        #
+        # self.serversocket = socket.socket(
+        #     socket.AF_INET, socket.SOCK_STREAM)
+        # self.host = socket.gethostname()
+        # self.port = 9999
+        self.Expression = []
 
         self.count = 0
         self.video = cv2.VideoCapture(0)
+        self.video.set(cv2.CAP_PROP_FPS, 20)
+
     def destroy(self):
         self.video.release()
     def get_frame(self):
@@ -22,14 +35,32 @@ class VideoCamera(object):
         model = pickle.load(pickle_in)
         B=0
         while(True):
+            self.video.set(cv2.CAP_PROP_FPS, 20)
             ret, frame = self.video.read()
-
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            B += 1
-            if B % 5 == 0:
-                return_list = []
+
+            # fps =  self.video.get(cv2.CAP_PROP_FPS)
+            # num_frames = 120
+            # print ("Capturing {0} frames".format(num_frames))
+            # # Start time
+            # start = time.time()
+            # for i in range(0, num_frames):
+            #     ret, frame = self.video.read()
+            # end = time.time()
+            # # Time elapsed
+            # seconds = end - start
+            # print("Time taken : {0} seconds".format(seconds))
+            # # Calculate frames per second
+            # fps = num_frames / seconds
+            # print("Estimated frames per second : {0}".format(fps))
+            # B += 1
+            if B % 5== 0:
+                file = open("Expressions.csv", "w")
+
                 face = detector(gray, 0)
+                # print("Number of Faces {}".format(len(face)))
                 for (J, rect) in enumerate(face):
+
                     shap = predictor(gray, rect)
                     xlist = []
                     ylist = []
@@ -63,29 +94,40 @@ class VideoCamera(object):
                     numpy_array = np.array(final)
 
                     prediction = model.predict([numpy_array])[0]
+                    # print(prediction)
 
-                    file_storage = "C:\\Users\\ADMIN\\Desktop\\Code_pics" + "\\" + prediction + str(self.count) + '.jpg'
-                    cv2.imwrite(file_storage, frame)
-                    self.count += 1
+                    if prediction == "INTERESTED":
+                        self.Expression.append(1)
+                    elif prediction == "BORE":
+                        self.Expression.append(-1)
+                    else:
+                        self.Expression.append(0)
+                    #
+                    with file:
+                         writter = csv.writer(file)
+                         writter.writerow(self.Expression)
+
+                    print("done")
+                    # file.close()
+                    # file_storage = "C:\\Users\\ADMIN\\Desktop\\Code_pics" + "\\" + prediction + str(self.count) + '.jpg'
+                    # cv2.imwrite(file_storage, frame)
+                    # self.count += 1
+
 
 
                     # predict.append(prediction)
                     (x, y, w, h) = face_utils.rect_to_bb(rect)
-                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
                     # display the image and the prediction
                     #     cv2.putText(frame, "FACE ({})".format(J+ 1) + " " + prediction, (x , y ), cv2.FONT_HERSHEY_COMPLEX, 0.5,
                     #             (0, 255, 0), 2)
-                    cv2.putText(frame, prediction, (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5,
+                    cv2.putText(frame, prediction, (x-7, y-6), cv2.FONT_HERSHEY_COMPLEX, 0.5,
                                 (0, 255, 0), 2)
-                    print(prediction)
+                    # print(prediction)
                     cv2.circle(frame, (centre_x, centre_y), 1, (0, 0, 0), 10)
                     for (x, y) in shap:
                         cv2.circle(frame, (x, y), 1, (0, 0, 255), 2)
                         cv2.line(frame,(centre_x,centre_y),(x,y),(0,255,1) )
-                        # print("done")
+                    cv2.waitKey(100)
                     ret, jpeg = cv2.imencode('.jpg', frame)
                     yield jpeg.tobytes( )
-                    # return jpeg.tobytes()
-
-                #     return_list.append( jpeg.tobytes())
-                # return return_list

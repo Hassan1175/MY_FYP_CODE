@@ -4,7 +4,7 @@ import os
 from camera import VideoCamera
 from threading import Thread
 import cv2
-
+import csv
 global index_add_counter
 app= Flask(__name__)
 
@@ -105,15 +105,6 @@ def my_projects():
     return render_template('page_profile_projects.html',user=user, projects = projects)
 
 
-
-
-
-
-
-
-
-
-
 @app.route('/my_history')
 def my_history():
     user = session["username"]
@@ -152,6 +143,34 @@ def release():
     user = session["username"]
     p.destroy()
     return render_template('page_profile.html',user=user)
+
+
+@app.route('/want_graph')
+def graphing():
+    p = VideoCamera()
+    user = session["username"]
+    p.destroy()
+
+    # user = session["username"]
+    return render_template('page_profile_graphing.html',user = user)
+
+
+@app.route('/graph')
+def graph():
+    file = open("Expressions.csv", "r")
+    reading = file.read()
+    mylist = []
+    with open("Expressions.csv") as file:
+        reading1 = csv.reader(file, delimiter=',')
+        for i in reading1:
+            for k in i :
+                mylist.append(k)
+    data = mylist
+    user = session["username"]
+    return render_template('graph.html',user = user, data = data)
+
+
+
 
 if __name__ ==('__main__'):
     # app.secret_key == os.urandom(50)

@@ -5,7 +5,7 @@
 
 <!-- Cloned by RabinsXP.com-->
 <head>
-    <title>Dashboard</title>
+    <title> My Projects </title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -47,12 +47,13 @@
 </head>
 
 <body>
+<!--=== End Style Switcher ===-->
 
 <div class="wrapper">
-    <div class="header">
+<div class="header">
         <div class="container">
             <!-- Logo -->
-                <a class="logo" href="{{url_for ('profile_main')}}">
+           <a class="logo" href="{{url_for ('profile_main')}}">
                 <img src="static/assets/img/logo1-default.png" alt="Logo">
             </a>
             <!-- End Logo -->
@@ -71,103 +72,69 @@
 
                 </ul>
             </div>
-            <!-- End Topbar -->
 
-            <!-- Toggle get grouped for better mobile display -->
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
-                <!--<span class="sr-only">Toggle navigation</span>-->
-                <!--<span class="fa fa-bars"></span>-->
-            <!--</button>-->
-            <!-- End Toggle -->
-        </div><!--/end container-->
+        </div>
 
 
-        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
-            <div class="container">
 
-            </div>
-        </div><!--/navbar-collapse-->
-    </div>
-    <!--=== End Header ===-->
-
-    <!--=== Profile ===-->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        </div>    <!--=== Profile ===-->
     <div class="container content profile">
     	<div class="row">
             <!--Left Sidebar-->
             <div class="col-md-3 md-margin-bottom-40">
                 <img class="img-responsive profile-img margin-bottom-20" src="static/assets/img/team/img32-md.jpg" alt="">
-
            <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                     <li class="list-group-item active">
                         <a href="{{url_for ('profile_main')}}"><i class="fa fa-bar-chart-o"></i> Home</a>
                     </li>
                     <li class="list-group-item">
                         <a href="{{url_for ('my_projects')}}"><i class="fa fa-cubes"></i> My Projects</a>
-                    <!--</li>-->
-                      <!--<li class="list-group-item">-->
-                        <!--<a href="page_profile_comments.html"><i class="fa fa-cubes"></i> My Notes</a>-->
-                    <!--</li>-->
-
+                    </li>
                     <li class="list-group-item">
                         <a href="{{url_for ('my_history')}}"><i class="fa fa-comments"></i> History</a>
                     </li>
-
                        <li class="list-group-item">
                         <a href="{{url_for ('my_profile')}}"><i class="fa fa-user"></i> My Profile</a>
                     </li>
-
                 </ul>
+                <div class="margin-bottom-50"></div>
 
             </div>
 
+            <div class="container">
+                <div>
+                     <ul class="nav navbar-nav">
+                        <li style="padding-left:180px"> <img src="static/assets/img/graphs/happy.jpg" class="img-responsive inline-block" alt="Responsive image" /> </li>
+                        <li style="padding-left:180px"><img src="static/assets/img/graphs/bore.jpg" class="img-respons<le inline-block" alt="Responsive image" /></li>
+                     <li style="padding-left:180px"> <img src="static/assets/img/graphs/Neutral.jpg" class="img-responsive inline-block" alt="Responsive image" /></li>
+                     </ul>
+                </div>
+                <br>
+                <br>
+                <br>
+                    <br>
+                <br>
 
-            <div align="center" id="div_video">
+            <div align="center">
 
-            <!--< align="center">-->
-                <!--<img src="static/assets/img/bore128.jpg" width="650" height="500">-->
-                <!--< img width="650" height="500" src="bore128.png"/>-->
-                <!--<iframe   width="650" height="500" src="{{url_for ('video_feed')}}"-->
-                            <!--frameborder="100" allowfullscreen style="display: none;"></iframe>-->
-
-                <!--<iframe  width="650" height="500" src="{{url_for ('video_feed')}}"-->
-                <!--frameborder="100" allowfullscreen></iframe>-->
+                <h1>Graphical Representation of Facial Expressions </h1>
+            </div>
+            <div  style="width:4000px" id = "chartContainer" >
             </div>
 
-
-              <div  id="head_text" class="headline-center">
-            <h1 style="padding-top:30px" > True-Face </h1>
-            <p>Ture-Face the application which can be used to detect <br>
-            human facial expression from single or multiple face.Then a graphical representation<br>
-            of facial expression can also be generated from video input. Every user will have to <br>
-                register his account in order to use that application.
-            </p>
-                   <hr>
-                   <hr>
-              </div>
-            <div id="home_buttons" align="center">
-                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Live Video Streaming (DEMO)</button></a></li>
-                <li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Create New Project</button></a></li>
-                <li style="margin-bottom: 15px;"><a href="{{url_for('User_Guide')}}"><button  class="btn-u pull-center" style="width:205px" >User Guide</button></a></li>
-
-                <!--<li style="margin-bottom: 15px;"><a href="{{url_for('graph')}}"><button  class="btn-u pull-center" style="width:205px" >Draw Graph</button></a></li>-->
-
-            </div>
-            <div id="Stop_button" >
-                <!--<a href="#"> <button id="stop_stream"class="btn-u pull-center" style="width:200px"> Stop Live Streaming</button></a>-->
-            </div>
-            <div id="show_graph" align="center">
-                <!--<a href="#"> <button id="show_graphs" class="btn-u pull-center" style="width:205px">Graphical Representation </button></a>-->
-                 <!--<a href="#"> <button id="home" class="btn-u pull-center" style="width:200px"> Home </button></a>-->
-            </div>
-
-            <hr>
+                </div>
     </div>
-    </div>
-<hr style="border-top: dotted 3px;" />
+    <!--=== End Profile ===-->
+
 
 </div><!--/wrapper-->
+
+
+    <hr style="border-top: dotted 3px;  " />
 <!-- JS Global Compulsory -->
-<script type="text/javascript" src="static/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="static/assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="static/assets/plugins/jquery/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- JS Implementing Plugins -->
@@ -186,43 +153,63 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
-        App.initCounter();
         App.initScrollBar();
         Datepicker.initDatepicker();
         StyleSwitcher.initStyleSwitcher();
     });
-
-
-    $("#video_stream").click(function(){
-    console.log("Clicked");
-     $("#head_text").hide()
-     $("#Stop_button").replaceWith('<a href="{{url_for('graphing')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="margin-top:200px"> Stop Live Streaming</button></a>')
-     $("#home_buttons").hide()
-     $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
-
-)});
-
-
-$('#stop_stream').click(function(){
-console.log("stop stream clicked");
-$("#div_video").hide()
-
-$("#home_buttons").hide()
-$("#home_buttons").replaceWith('<a href="#"> <button id="graph"class="btn-u pull-bottom" style="margin-top:200px"> Show graph</button></a>')
-
-$("#head_text").hide()
-});
-
-
-
 </script>
 <!--[if lt IE 9]>
     <script src="static/assets/plugins/respond.js"></script>
     <script src="static/assets/plugins/html5shiv.js"></script>
     <script src="static/assets/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
+
+    <script>
+window.onload = function () {
+mylist = []
+var dataa = {{data|safe}}
+
+function myfun(){
+
+
+ for (  var i = 0 ; i < dataa.length ; i++){
+    mylist.push({
+        x : i,
+        y : Number(dataa[i])
+    });
+
+ }
+
+};
+myfun();
+
+console.log(mylist[2]);
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: " "
+	},
+
+	data: [{
+		type: "line",
+		dataPoints: mylist
+	}]
+});
+
+chart.render();
+
+
+
+
+}
+</script>
+
+
+
+
+
 </div>
 </body>
-
-<!-- Cloned by RabinsXP.com-->
 </html>
