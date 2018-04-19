@@ -144,7 +144,7 @@ def release():
     p.destroy()
     return render_template('page_profile.html',user=user)
 
-
+#That route is for the page on whicch i will ask users to make graphs or not..
 @app.route('/want_graph')
 def graphing():
     p = VideoCamera()
