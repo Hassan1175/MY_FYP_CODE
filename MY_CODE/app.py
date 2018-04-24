@@ -73,15 +73,15 @@ def profile_main():
 
 def gen(cam):
     while True:
-    #     frame = cam.get_frame()
-    #     # frame = frame.tobytes()
-    #     # for pic in frame:
-    #     yield (b'--frame\r\n'
-    #            b'Content-Type: image/jpeg\r\n\r\n' + pic+ b'\r\n\r\n')
-       for frame in cam.get_frame():
-       #  f1 = next(cam.get_frame())
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+        # frame = cam.get_frame()
+        # for pic in frame:
+        #     yield (b'--frame\r\n'
+        #        b'Content-Type: image/jpeg\r\n\r\n' + pic() + b'\r\n\r\n')
+        for frame in cam.get_frame():
+            #  f1 = next(cam.get_frame())
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
 
 @app.route('/video_feed')
 def video_feed():
@@ -96,8 +96,8 @@ def my_projects():
     if request.method=='POST':
         title=request.form['title']
         disp = request.form['desc']
-        # print(title)
-        # print(disp)
+        print(title)
+        print(disp)
         project = mongo.db.projects
         project.remove({"Project_title": title}, {"Description": disp})
         # return render_template('page_profile_projects.html')
@@ -132,7 +132,7 @@ def New_Project():
         if request.form['Project_title']=="" or  request.form ['Date']=="":
             flash("Please fill all mandatory enteries")
         else:
-            projects.insert({"Project_title":Project_title, "Date":Date ,"Description":Description})
+            projects.insert({"Project_title":Project_title, "Date":Date ,"Description":Description,"user":user})
             return render_template("page_project_started.html",user = user)
     return render_template('New_Project.html',user = user)
 

@@ -6,7 +6,7 @@
 
 <!-- Cloned by RabinsXP.com-->
 <head>
-    <title>Dashboard</title>
+    <title>Project_Started</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -155,17 +155,23 @@
             <!---->
 
 
-            <div id="head_text" align="center">
-                <h1>Welcome to <u>True-Face</u></h1>
-                    <li style="margin-top: 15px;"> Live Video Streaming button if you want to get live video from camera</li>
-                <!--<li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Start Video Streaming</button></a></li>-->
-                <li style="margin-bottom: 15px;">Upload Video From File button if you want to upload a video from a computer.</li>
-            </div>
-                    <hr>
+            <div  id="head_text" class="headline-center">
+            <h1 style="padding-top:30px" > True-Face </h1>
+            <p>Ture-Face the application which can be used to detect <br>
+            human facial expression from single or multiple face.Then a graphical representation<br>
+            of facial expression can also be generated from video input. Every user will have to <br>
+                register his account in order to use that application.
+            </p>
                    <hr>
+                   <hr>
+              </div>
+
+
+
+
 
             <div id="home_buttons" align="center">
-                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Live Video Streaming Testing</button></a></li>
+                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Live Video Streaming</button></a></li>
                 <!--<li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Start Video Streaming</button></a></li>-->
                 <li style="margin-bottom: 15px;"><a href="{{url_for('User_Guide')}}"><button  class="btn-u pull-center" style="width:205px" >Upload Video From File</button></a></li>
             </div>
@@ -208,7 +214,7 @@
     console.log("Clicked");
      $("#head_text").hide()
      $("#home_buttons").hide()
-     $("#Stop_button").replaceWith('<a href="#"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
+     $("#Stop_button").replaceWith('<a href="{{url_for('graphing')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
 
 
     $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'

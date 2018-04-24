@@ -5,7 +5,7 @@ from sklearn.svm import LinearSVC
 from imutils import paths
 import cv2
 import dlib
-
+#
 from imutils import face_utils
 # face_classifier =  cv2.CascadeClassifier('harcascades/haarcascade_frontalface_default.xml')
 dlib_path = "dlibb/shape_predictor_68_face_landmarks.dat"
@@ -18,11 +18,11 @@ import os
 import mpmath
 import numpy as np
 
-src_path = ("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\TESTING_DATASET\\")
+src_path = ("O:\\Namal\\TESTING_PROJECT\\testing\\test_project\\TESTING_DATASET\\")
 predict = []
 features_vector = []
 
-pickle_in = open("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\dlib_normalized.pickle","rb")
+pickle_in = open("O:\\Namal\\TESTING_PROJECT\\testing\\test_project\\New_testing_dlib_normalized.pickle","rb")
 
 # pickle_in = open("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\dlib_normalized_full.pickle","rb")
 
@@ -35,6 +35,7 @@ for imgage in items:
     pics = os.listdir(folder)
     for piic in pics:
         tasveer = cv2.imread(piic)
+
         face = detector(tasveer,0)
         for (J, rect) in enumerate(face):
             shap = predictor(tasveer, rect)
@@ -86,16 +87,11 @@ for imgage in items:
         # cv2.putText(tasveer,  prediction, (x-5 , y-5 ), cv2.FONT_HERSHEY_COMPLEX, 1.2,
         #             (0, 0, 255),4)
         print(prediction)
-        cv2.imshow("Image", tasveer)
-        cv2.waitKey(0)
+        # cv2.imshow("Image", tasveer)
+        # cv2.waitKey(0)
 
 
-
-
-
-
-
-file =  open("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\dlib_testing_labels.txt","r")
+file =  open("dlib_testing_labels.txt","r")
 reading = file.read()
 reading2 = reading.split()
 new_list = []
@@ -105,6 +101,11 @@ for item in reading2:
         if entry.isalpha()==True:
             new_str = new_str+entry
     new_list.append(new_str)
+print(type(new_list))
+print(predict)
+print(type(predict))
+print(len(predict))
+
 count = 0.0
 correct = 0
 for i in range(len(new_list)):
