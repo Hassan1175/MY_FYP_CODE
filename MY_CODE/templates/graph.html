@@ -105,9 +105,9 @@
             <div class="container">
                 <div>
                      <ul class="nav navbar-nav">
-                        <li style="padding-left:180px"> <img src="static/assets/img/graphs/happy.jpg" class="img-responsive inline-block" alt="Responsive image" /> </li>
-                        <li style="padding-left:180px"><img src="static/assets/img/graphs/bore.jpg" class="img-respons<le inline-block" alt="Responsive image" /></li>
-                     <li style="padding-left:180px"> <img src="static/assets/img/graphs/Neutral.jpg" class="img-responsive inline-block" alt="Responsive image" /></li>
+                        <li style="padding-left:180px">Happy <img src="static/assets/img/graphs/happy.jpg" class="img-responsive inline-block" alt="Responsive image" /> </li>
+                        <li style="padding-left:180px">Bore<img src="static/assets/img/graphs/bore.jpg" class="img-responsive inline-block" alt="Responsive image" /></li>
+                     <li style="padding-left:180px">Neutral <img src="static/assets/img/graphs/Neutral.jpg" class="img-responsive inline-block" alt="Responsive image" /></li>
                      </ul>
                 </div>
                 <br>
@@ -120,8 +120,12 @@
 
                 <h1>Graphical Representation of Facial Expressions </h1>
             </div>
-            <div  style="width:4000px" id = "chartContainer" >
+
+
+               <div class="chartWrapper" style="height: 300px; width: 850px; overflow-x:scroll;position:relative;">
+                    <div id="chartContainer" style="height:300px; width:4000px;"></div>
             </div>
+
 
                 </div>
     </div>
@@ -164,32 +168,46 @@
     <script src="static/assets/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
 
+
+
     <script>
 window.onload = function () {
 mylist = []
 var dataa = {{data|safe}}
 
+var Expressions = ["Interested", "Bore", "Neutral"];
 function myfun(){
-
 
  for (  var i = 0 ; i < dataa.length ; i++){
     mylist.push({
         x : i,
         y : Number(dataa[i])
     });
-
  }
-
 };
-myfun();
 
+
+myfun();
 console.log(mylist[2]);
 
 var chart = new CanvasJS.Chart("chartContainer", {
+
 	animationEnabled: true,
-	theme: "light2",
+	theme: "light1",
 	title:{
 		text: " "
+	},
+
+	axisY:{
+		title: "Expressions",
+		interval: 1,
+
+	},
+
+	axisX:{
+		title: "Time",
+		interval: 5,
+
 	},
 
 	data: [{
@@ -197,19 +215,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		dataPoints: mylist
 	}]
 });
-
 chart.render();
-
-
-
-
 }
 </script>
-
-
-
-
-
 </div>
 </body>
 </html>

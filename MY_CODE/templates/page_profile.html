@@ -103,10 +103,6 @@
                     </li>
                     <li class="list-group-item">
                         <a href="{{url_for ('my_projects')}}"><i class="fa fa-cubes"></i> My Projects</a>
-                    <!--</li>-->
-                      <!--<li class="list-group-item">-->
-                        <!--<a href="page_profile_comments.html"><i class="fa fa-cubes"></i> My Notes</a>-->
-                    <!--</li>-->
 
                     <li class="list-group-item">
                         <a href="{{url_for ('my_history')}}"><i class="fa fa-comments"></i> History</a>
@@ -145,7 +141,7 @@
                    <hr>
               </div>
             <div id="home_buttons" align="center">
-                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Live Video Streaming (DEMO)</button></a></li>
+                    <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Play Video (DEMO)</button></a></li>
                 <li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Create New Project</button></a></li>
                 <li style="margin-bottom: 15px;"><a href="{{url_for('User_Guide')}}"><button  class="btn-u pull-center" style="width:205px" >User Guide</button></a></li>
 
@@ -196,7 +192,7 @@
     $("#video_stream").click(function(){
     console.log("Clicked");
      $("#head_text").hide()
-     $("#Stop_button").replaceWith('<a href="{{url_for('graphing')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="margin-top:200px"> Stop Live Streaming</button></a>')
+     $("#Stop_button").replaceWith('<a href="{{url_for('graphing')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="margin-top:200px"> Stop Video</button></a>')
      $("#home_buttons").hide()
      $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
 
