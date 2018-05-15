@@ -115,32 +115,25 @@
             <!--End Left Sidebar-->
 
             <!-- Profile Content -->
+             <div class="reg-header" align="center">
+                 <h2>My History</h2>
+                 <p> <a href="{{url_for('clear_history')}}"><button type="button"  class="btn-u pull-right"  data-toggle="confirmation" data-title="Are you SURE">Clear History</button></a></p>
+             </div>
+
+            <br>
             <div class="col-md-9">
                 <div class="profile-body">
-                    <!--Timeline-->
                     <ul class="timeline-v2">
-
+                        {% for project in history %}
                         <li>
-                            <time class="cbp_tmtime" datetime=""><span>2/4/11</span> <span>April</span></time>
+                            <time class="cbp_tmtime" datetime=""><span>{{project.Date}}</span></time>
                             <i class="cbp_tmicon rounded-x hidden-xs"></i>
                             <div class="cbp_tmlabel">
-                                <h2>Back to the past</h2>
-                                <p>Peanut gourd nori welsh onion rock melon mustard jícama. Desert raisin amaranth kombu aubergine kale seakale brussels sprout pea. Black-eyed pea celtuce bamboo shoot salad kohlrabi leek squash prairie turnip catsear rock melon chard taro broccoli turnip greens. Fennel quandong potato watercress ricebean swiss chard garbanzo. Endive daikon brussels sprout lotus root silver beet epazote melon shallot.</p>
+                                <h2>{{project.Project_title}}</h2>
+                                <p>{{project.Description}}</p>
                             </div>
                         </li>
-                        <li>
-                            <time class="cbp_tmtime" datetime=""><span>18/7/13</span> <span>June</span></time>
-                            <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                            <div class="cbp_tmlabel">
-                                <h2>Unify in recent years</h2>
-                                <p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</p>
-                                <p>Bitterleaf celery coriander epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout.</p>
-
-                                <div class="margin-bottom-20"></div>
-
-
-                            </div>
-                        </li>
+                        {%endfor %}
                     </ul>
                     <!--End Timeline-->
                 </div>
@@ -185,7 +178,6 @@
     <script src="static/assets/plugins/html5shiv.js"></script>
     <script src="static/assets/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
-
 </body>
 
 <!-- Cloned by RabinsXP.com-->

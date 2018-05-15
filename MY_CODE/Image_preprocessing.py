@@ -7,7 +7,6 @@ import glob
 import imutils
 from imutils import face_utils
 import os
-
 face_classifier =  cv2.CascadeClassifier('harcascades/haarcascade_frontalface_default.xml')
 src_path = ("C:\\Users\\ADMIN\\Desktop\\My_data")
 dst_path = ("C:\\Users\\ADMIN\\Desktop\\mmmm")

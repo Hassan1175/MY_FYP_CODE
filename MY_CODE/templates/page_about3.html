@@ -93,17 +93,7 @@
 
 
                     <!-- Search Block -->
-                    <li>
-                        <i class="search fa fa-search search-btn"></i>
-                        <div class="search-open">
-                            <div class="input-group animated fadeInDown">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="input-group-btn">
-                                    <button class="btn-u" type="button">Go</button>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
+
                     <!-- End Search Block -->
                 </ul>
             </div><!--/end container-->
@@ -129,8 +119,14 @@
                     </div>
                     <div class="col-md-6">
                         <h2>Methadology of Facial Landmarks Detection</h2>
-                        <p>Ducimus qui blanditiis praesentium voluptatum deleniti atque cupiditate non provident, similique sunt in culpa qui officia ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p><br>
+
+                        <p>With the help of computer vision library DLIB, facial landmarks can be marked on the face. Infact these points are x,y coordinates
+                        on the face.
+
+                        </p>
+                        <p>In the detected face, these point, which are in the form of X,Y coordinates are extracted.
+                            Then these coordinates are normalized against central point to make the location invariant.
+</p><br>
                         <hr style="border-top: dotted 3px;" />
 
 
@@ -146,18 +142,52 @@
             <div class="container content">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>Generation of the Graph, Based on Facial Expressions</h2>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus..</p>
-                        <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+                        <h2>Training of SVM Classifier</h2>
+                        <p>Support vector machines is the supervised machine learning algorithm, which can be
+used for both classification and regression related problems. In most cases it is
+generally used to address the classification related issues. In the support vector
+machine the each point of the dataset is plotted in n-dimensional space (where n is
+the number of the feature, which is available in the dataset) with the value of each
+feature, being the value of each coordinate in x-y plane</p>
+                        <p>n the support vectors machine, after scattering the data on the x-y plane the
+classification is performed, after finding suitable hyper-plane that can differentiate
+two classes in well manner by segregating them from mid</p>
                     <hr style="border-top: dotted 3px;" />
                     </div>
                     <div class="col-md-6">
-                        <img src="static/assets/img/main/img6.png" class="img-responsive margin-bottom-10" alt="">
+                        <img src="static/assets/img/main/svm.jpg" class="img-responsive margin-bottom-10" alt="">
                     </div>
                 </div>
             </div>
         </div>
     <hr>
+
+
+        <div class="one-page-inner one-default">
+            <div class="container content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="static/assets/img/main/graph.png" class="img-responsive margin-bottom-10" alt="">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Generation of the Graph, Based on Facial Expressions</h2>
+                        <p>The grpahical reprsentaion of the audience interest level
+                            , based on their facail expressions. The graphical represntation
+                            contains cursts and troughs which reveals the audience interests.
+                            at different stages during the event. In the that way the feedback about the
+                            event interest level, can be got from that graphical representation.
+                            </p><br>
+                        <hr style="border-top: dotted 3px;" />
+
+
+                     </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
 
     <!--=== End Container Part ===-->
 

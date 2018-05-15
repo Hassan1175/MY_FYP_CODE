@@ -6,6 +6,9 @@ from threading import Thread
 import cv2
 import csv
 import time
+import datetime
+
+
 app= Flask(__name__)
 
 start_time = 0
@@ -76,7 +79,7 @@ def gen(cam):
     global start_time
     start_time = time.time()
     print(start_time)
-    print("heloo word")
+    print("Time Shru")
 
     while True:
         frame = cam.get_frame()
@@ -102,19 +105,25 @@ def my_projects():
     if request.method=='POST':
         title=request.form['title']
         disp = request.form['desc']
-        # print(title)
-        # print(disp)
         project = mongo.db.projects
         project.remove({"Project_title": title}, {"Description": disp})
         # return render_template('page_profile_projects.html')
     projects = mongo.db.projects.find({'user': user})
     return render_template('page_profile_projects.html',user=user, projects = projects)
 
-
 @app.route('/my_history')
 def my_history():
     user = session["username"]
-    return render_template('page_profile_history.html',user =user)
+    history = mongo.db.history.find({'user': user})
+    return render_template('page_profile_history.html',user =user,history=history)
+
+@app.route('/my_historyy')
+def clear_history():
+    mongo.db.history.drop()
+    user = session["username"]
+    history = mongo.db.history.find({'user': user})
+    return render_template('page_profile_history.html',user =user,history=history)
+
 @app.route('/my_profile')
 def my_profile():
     user = session["username"]
@@ -130,27 +139,31 @@ def New_Project():
     user = session["username"]
     if (request.method == 'POST'):
         projects = mongo.db.projects
-
+        history = mongo.db.history
         Project_title =request.form['Project_title']
         Date = request.form ['Date']
         Description = request.form['Description']
-
         if request.form['Project_title']=="" or  request.form ['Date']=="":
             flash("Please fill all mandatory enteries")
         else:
             projects.insert({"Project_title":Project_title, "Date":Date ,"Description":Description,"user":user})
+            history.insert({"Project_title": Project_title, "Date": Date, "Description": Description, "user": user})
+
             return render_template("page_project_started.html",user = user)
-    return render_template('New_Project.html',user = user)
+    return render_template('New_Project.html',user = user )
 
 
 @app.route('/want_graph')
 def graphing():
     p = VideoCamera()
     user = session["username"]
-    print("kmlaaa")
+    global end_time
+    end_time = time.time()
+    print(end_time)
+    T_time = end_time-start_time
+    print(T_time)
+    print("Done HYEE")
     p.destroy()
-
-    # user = session["username"]
     return render_template('page_profile_graphing.html',user = user)
 
 
@@ -167,6 +180,9 @@ def graph():
     data = mylist
     user = session["username"]
     return render_template('graph.html',user = user, data = data)
+# @app.route('/upload')
+# def  uploading:
+
 
 if __name__ ==('__main__'):
     # app.secret_key == os.urandom(50)

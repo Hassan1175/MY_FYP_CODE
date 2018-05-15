@@ -19,10 +19,9 @@ class VideoCamera(object):
         self.Expression = []
         self.return_list = []
         self.frame = -1
-        self.video = cv2.VideoCapture(0)
-        # self.video = cv2.VideoCapture("output.avi")
-        self.video.set(cv2.CAP_PROP_FPS, 5)
-
+        # self.video = cv2.VideoCapture(0)
+        self.video = cv2.VideoCapture("frames.mp4")
+        # self.video.set(cv2.CAP_PROP_FPS, 5)
     def destroy(self):
 
         self.video.release()
@@ -35,7 +34,7 @@ class VideoCamera(object):
     def get_frame(self):
 
         pickle_in = open("New_testing_dlib_normalized.pickle", "rb")
-        # pickle_in = open("O:\\Nama_College\\FYP\\MY_FYP_CODE\\MY_FYP_CODE\\MY_CODE\\dlib_normalized_full.pickle","rb")
+
         model = pickle.load(pickle_in)
         while(self.video.isOpened()) :
             self.frame += 1

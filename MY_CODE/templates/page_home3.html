@@ -90,24 +90,12 @@
                                             <li><a href="{{url_for ('contact')}}">Contact Us</a></li>
 								          <!--<li><a href="#">FAQS</a></li>-->
                                 <!--<li><a href="#">TESTING</a></li>-->
-                        <li>
-                        <i class="search fa fa-search search-btn"></i>
-                        <div class="search-open">
-                            <div class="input-group animated fadeInDown">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="input-group-btn">
-                                    <button class="btn-u" type="button">Go</button>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
+
                 </ul>
             </div><!--/end container-->
         </div><!--/navbar-collapse-->
     </div>
-    <!--=== End Header ===-->
 
-    <!--=== Slider ===-->
     <div class="tp-banner-container">
         <div class="tp-banner">
             <ul>
@@ -233,16 +221,41 @@
             <div class="tp-bannertimer tp-bottom"></div>
         </div>
     </div>
+<br>
+    <div>
 
-    <div >
+
+        <div align="center" style="padding-top:"30px>
+
+            <h1>  True-Face Chracteristics</h1>
+
+        </div>
+
+
+
+
+
+
+
 
         <div class="one-page-inner one-default">
             <div class="container content">
                 <div class="row margin-bottom-10">
                     <div class="col-md-6">
                         <h2>Detection of Human Faces in the Group  Picture</h2>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus..</p>
-                        <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+                        <p>Most face detection algorithms use segmentation in combination
+                           with feature detection to delineate a face and highlight features in it. Most good performing face
+        detection algorithms work on the basis of training on several thousand facial images as data set on neural networks or GA-based networks.   There are more advanced shape and colour based algorithms for face detection in special use-cases     </p>
+
+                        <p>But in that project OPENCV and Dlib face dection classifers has been used.
+                          OPENCV comes with two pre-trained classifiers for face detection
+                        <li>
+                        Haar Cascade Classifier
+                    </li>
+                        <li>
+                       LBP Cascade Classifier
+                    </li>
+                        </p>
                     <hr style="border-top: dotted 3px;" />
                     </div>
                     <div class="col-md-6">
@@ -276,8 +289,10 @@
                     </div>
                     <div class="col-md-6">
                         <h2>Expressions Detection on the Basis of Facial Landmarks</h2>
-                        <p>Ducimus qui blanditiis praesentium voluptatum deleniti atque cupiditate non provident, similique sunt in culpa qui officia ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p><br>
+                        <p>Features extraction is one of the most important aspect in training any machine learning algorithm.</p>
+                        <p>In that application a C++ library named as DLIB has been used. Which enable the user to mark facial landmarks
+                            which can be used to detection facial expression.
+                         So in that application DLIB facial landmarks has been used detect expressions</p><br>
                         <hr style="border-top: dotted 3px;" />
 
 
@@ -292,8 +307,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h2>Classification of Facial Expressions in the Video Frame</h2>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus..</p>
-                        <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
+                        <p>Basically True-Face has been developed to mark an public event as interested or un-interested bases on the
+                            facial expressions of the people. Therefore each detected face is passed to classifier to detect the expression of every individual.
+
+                        </p>
+                        <p>
+                           The True-Face is able to get a video file as input, then it process it accordingly to detect faces and then detection of
+                        facial expressions. In the following pic a frame from a video file has been extracted and then processing has done. As a result
+                            various faces can be seen with their relevant expressions.
+
+                        </p>
                     <hr style="border-top: dotted 3px;" />
                     </div>
                     <div class="col-md-6">
