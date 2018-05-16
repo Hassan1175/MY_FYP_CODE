@@ -11,6 +11,9 @@ face_classifier =  cv2.CascadeClassifier('harcascades/haarcascade_frontalface_de
 src_path = ("C:\\Users\\ADMIN\\Desktop\\My_data")
 dst_path = ("C:\\Users\\ADMIN\\Desktop\\mmmm")
 
+best_int_path =  ("BEST_INT")
+
+
 #face = face_classifier1.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=10, minSize=(5, 5),  flags=cv2.CASCADE_SCALE_IMAGE)
 def face_croppped(image):
     global crop

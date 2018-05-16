@@ -118,14 +118,10 @@
                     </li>
 
                 </ul>
-                <!--Datepicker-->
-
-                <!--End Datepicker-->
             </div>
 
 
             <div align="center" id="div_video">
-
             <!--< align="center">-->
                 <!--<img src="static/assets/img/bore128.jpg" width="650" height="500">-->
                 <!--< img width="650" height="500" src="bore128.png"/>-->
@@ -166,15 +162,21 @@
                    <hr>
               </div>
 
+            <div id ="video_uploading" style="display:hide">
 
-
-
+        <form action="http:/uploader" method="POST"
+        enctype="multipart/form-data" >
+        <input type="file" name ="file"/>
+        <a href="#"> <button id="video" input type="submit" class="btn-u pull-center" style="width:200px"> Submit </button></a>
+        </form>
+            </div>
 
             <div id="home_buttons" align="center">
                     <li style="margin-bottom: 15px;"><a href="#"> <button id="video_stream"class="btn-u pull-center" style="width:205px">Live Video Streaming</button></a></li>
                 <!--<li style="margin-bottom: 15px;"> <a href="{{url_for('New_Project')}}"> <button  class="btn-u pull-center" style="width:205px">Start Video Streaming</button></a></li>-->
-                <li style="margin-bottom: 15px;"><a href="#"><button  class="btn-u pull-center" style="width:205px" >Upload Video From File</button></a></li>
+                <li style="margin-bottom: 15px;"><a href="#"><button  id="file_uploading"   class="btn-u pull-center" style="width:205px" >Upload Video From File</button></a></li>
             </div>
+
             <div id="Stop_button" align="center">
                 <!--<a href="#"> <button id="stop_stream"class="btn-u pull-center" style="width:200px"> Stop Live Streaming</button></a>-->
             </div>
@@ -211,14 +213,42 @@
     });
 
     $("#video_stream").click(function(){
-    console.log("Clicked");
+
      $("#head_text").hide()
      $("#home_buttons").hide()
      $("#Stop_button").replaceWith('<a href="{{url_for('graphing')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
 
-
-    $("#div_video").replaceWith('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
+    $("#div_video").append('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
 )});
+
+      $('#video_uploading').hide()
+    $("#file_uploading").click(function(){
+    console.log("Clicked");
+     $("#head_text").hide()
+     $("#home_buttons").replaceWith($('#video_uploading'))
+     $('#video_uploading').show()
+     <!--$("#Stop_button").replaceWith('<a href="{{url_for('graphing')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')-->
+});
+
+
+
+
+
+$("#video").click(function(){
+
+     $("#head_text").hide()
+     $("#home_buttons").hide()
+     $("#Stop_button").replaceWith('<a href="{{url_for('graphing')}}"> <button id="stop_stream"class="btn-u pull-bottom" style="width:200px"> Stop Live Streaming</button></a>')
+
+    $("#div_video").append('<iframe  align="center" width="650" height="500" src="{{url_for ('video_feed')}}" frameborder="100" allowfullscreen ></iframe>'
+)});
+
+
+
+
+
+
+
 
 <!--$("#stop_stream").click(function (){-->
   <!--$("#head_text").show();-->

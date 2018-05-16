@@ -2,17 +2,16 @@ import dlib
 from imutils import face_utils
 import pickle
 import cv2
-import os
-import time
 import mpmath
 import numpy as np
 import csv
 
 
+best_int_path =  ("BEST_INT")
+
 dlib_path = "dlibb/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(dlib_path)
-
 class VideoCamera(object):
 
     def __init__(self):
@@ -20,21 +19,19 @@ class VideoCamera(object):
         self.return_list = []
         self.frame = -1
         # self.video = cv2.VideoCapture(0)
-        self.video = cv2.VideoCapture("frames.mp4")
+        # self.video = cv2.VideoCapture("video1.avi")
+        self.video = cv2.VideoCapture("video2.avi")
+        # self.video = cv2.VideoCapture("output.avi")
         # self.video.set(cv2.CAP_PROP_FPS, 5)
-    def destroy(self):
 
+        self.int_count = 0
+
+    def destroy(self):
         self.video.release()
         cv2.destroyAllWindows()
-        # self.endd = time.time()
-        # print(self.endd)
-        # S =  self.start_time - self.endd
-        # print(S)
 
     def get_frame(self):
-
         pickle_in = open("New_testing_dlib_normalized.pickle", "rb")
-
         model = pickle.load(pickle_in)
         while(self.video.isOpened()) :
             self.frame += 1
@@ -48,11 +45,16 @@ class VideoCamera(object):
                     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
                     file = open("Expressions.csv", "w")
                     face = detector(gray,0)
+                    # print("lala")
+                    # print(type(face))
+                    # print(face)
+
                     # print("Number of Faces {}".format(len(face)))
                     my_list = []
                     count_interested= 0
                     count_bore  =0
                     count_neutral =0
+
                     for (J, rect) in enumerate(face):
                         shap = predictor(frame, rect)
                         xlist = []
@@ -83,11 +85,13 @@ class VideoCamera(object):
                                 continue
                             F = i / maxx
                             final.append(F)
-                        # print(final)
                         numpy_array = np.array(final)
+
+
+                        #Prdiction by the MOdel
+
                         prediction = model.predict([numpy_array])[0]
-                        # print(prediction)
-                        # print("done")
+
                         (x, y, w, h) = face_utils.rect_to_bb(rect)
                         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
                         # display the image and the prediction
@@ -97,7 +101,7 @@ class VideoCamera(object):
                         for (x, y) in shap:
                             cv2.circle(frame, (x, y), 1, (0, 0, 255), 2)
                             cv2.line(frame,(centre_x,centre_y),(x,y),(0,255,1) )
-                        # cv2.waitKey(100)
+
                         if prediction == "INTERESTED":
                             count_interested +=1
                             # self.Expression.append(1)
@@ -121,6 +125,22 @@ class VideoCamera(object):
                     with file:
                      writter = csv.writer(file)
                      writter.writerow(self.Expression)
+
+
+                    #Here wil be the code for best expression...
+
+                    # print(self.int_count)
+                    if(count_interested > self.int_count):
+                        print("BEST frame has been caught")
+
+                        file_storage = best_int_path + "\\" + "BEST_PIC" + '.jpg'
+                        cv2.imwrite(file_storage, gray)
+                        # global self.int_count
+                        print(self.int_count)
+                        self.int_count = count_interested
+                        print("best frame has been save to record")
+
+                    #sending detected faces list to app.py file on to be displayed the browser
                     return (my_list)
             else:
                 break

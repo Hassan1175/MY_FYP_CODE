@@ -186,12 +186,9 @@ function myfun(){
  }
 };
 
-
 myfun();
 console.log(mylist[2]);
-
 var chart = new CanvasJS.Chart("chartContainer", {
-
 	animationEnabled: true,
 	theme: "light1",
 	title:{
@@ -203,7 +200,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	axisX:{
 		title: "Time",
-		interval: 1,
+		interval: 5,
 	},
 	data: [{
 		type: "line",

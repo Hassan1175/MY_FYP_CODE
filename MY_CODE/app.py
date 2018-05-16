@@ -7,6 +7,7 @@ import cv2
 import csv
 import time
 import datetime
+from werkzeug.utils import secure_filename
 
 
 app= Flask(__name__)
@@ -27,14 +28,13 @@ def home():
   # if 'username' in session:
   #       return 'You are logged in as ' + session['username']
   return  render_template('page_home3.html')
-
 @app.route('/about')
 def about():
     return render_template('page_about3.html')
-
 @app.route('/contact')
 def contact():
     return render_template('page_contact.html')
+
 
 @app.route('/login',methods = ['GET','POST'])
 def login():
@@ -50,6 +50,11 @@ def login():
         if (not login_user) or ((request.form['pass'] != login_user['password'])):
             flash("Invalid Username/Password")
     return render_template('page_login.html')
+
+
+
+
+
 
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():
@@ -69,18 +74,15 @@ def registration():
         # return 'That username already exists!'
     return render_template('page_registration.html')
 
-
 @app.route('/profile')
 def profile_main():
     user = session["username"]
     return render_template('page_profile.html',user=user)
-
 def gen(cam):
     global start_time
     start_time = time.time()
     print(start_time)
     print("Time Shru")
-
     while True:
         frame = cam.get_frame()
         if frame != None:
@@ -110,6 +112,8 @@ def my_projects():
         # return render_template('page_profile_projects.html')
     projects = mongo.db.projects.find({'user': user})
     return render_template('page_profile_projects.html',user=user, projects = projects)
+
+
 
 @app.route('/my_history')
 def my_history():
@@ -183,6 +187,25 @@ def graph():
 # @app.route('/upload')
 # def  uploading:
 
+
+@app.route('/uploader', methods = ['GET','POST'])
+def uploader():
+    if request.method == 'POST':
+        f= request.files['file']
+        S = str(f)
+        print (S)
+        P  = S.split('/')
+        # print(P)
+        L =(P[1])
+        M=  L.split("'")
+        H=  (M [0])
+        print(H)
+        if H in  ("mp4","avi"):
+            f.filename = "HASSAAN"+ '.avi'
+            f.save (secure_filename(f.filename))
+            # return render_template("page_project_started.html")
+        else:
+            return "CANT BE UPLOADED"
 
 if __name__ ==('__main__'):
     # app.secret_key == os.urandom(50)
